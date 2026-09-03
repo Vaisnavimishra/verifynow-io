@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light theme (backup) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Fake Detection Dark Theme - OpenAI/Perplexity inspired */
+    --background: 217 19% 6%; /* #0E1117 */
+    --surface: 220 13% 10%; /* #111827 */
+    --foreground: 220 9% 89%; /* #E5E7EB */
+    --foreground-secondary: 220 5% 65%; /* #9CA3AF */
+    
+    --card: 220 13% 10%; /* #111827 */
+    --card-foreground: 220 9% 89%;
+    
+    --popover: 220 13% 10%;
+    --popover-foreground: 220 9% 89%;
+    
+    /* Primary - OpenAI Green */
+    --primary: 158 64% 52%; /* #10A37F */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 158 64% 42%;
+    
+    /* Secondary - Perplexity Blue */
+    --secondary: 219 91% 61%; /* #4C8BF5 */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 219 91% 51%;
+    
+    --muted: 220 13% 10%;
+    --muted-foreground: 220 5% 65%;
+    
+    --accent: 219 91% 61%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Status Colors */
+    --success: 142 76% 55%; /* #22C55E */
+    --success-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%; /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+    --warning: 43 96% 56%; /* #F59E0B */
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 220 13% 15%;
+    --input: 220 13% 15%;
+    --ring: 158 64% 52%;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(158 64% 52%), hsl(158 64% 42%));
+    --gradient-secondary: linear-gradient(135deg, hsl(219 91% 61%), hsl(219 91% 51%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 19% 6%), hsl(220 13% 10%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(158 64% 52% / 0.15);
+    --shadow-card: 0 4px 20px hsl(217 19% 3% / 0.5);
+    --shadow-elevated: 0 8px 30px hsl(217 19% 3% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply dark; /* Default to dark theme */
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
